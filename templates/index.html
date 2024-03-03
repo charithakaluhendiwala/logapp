@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Logs</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#generateButton").click(function() {
+                $.ajax({
+                    type: "GET",
+                    url: "/generate_logs",
+                    success: function(response) {
+                        $("#logs").html(response);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#saveButton").click(function() {
+                $.ajax({
+                    type: "GET",
+                    url: "/save_logs",
+                    success: function(response) {
+                        alert(response);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Random Logs</h1>
+    <button id="generateButton">Generate Logs</button>
+    <button id="saveButton">Save Logs</button>
+    <div id="logs"></div>
+</body>
+</html>
